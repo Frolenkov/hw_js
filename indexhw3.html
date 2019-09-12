@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HW2</title>    
+</head>
+<body>
+	Frolenkov Kirill
+	
+	
+	<pre>
+		Первое задание
+function func (){
+ console.log ( arguments.callee, arguments )}
+	</pre>
+
+	<pre>
+		Второе задание
+
+vvar myDate = new Date()
+
+var person = {
+    name: "Name",
+    registered: true,
+    data: myDate.toLocaleString(), 
+}
+
+var nobody = {
+    name: "nobody",
+    registered: false,
+    data: NaN 
+}
+
+function userInfo(obj){  
+        if(obj.registered == true){
+            console.log("Дата регистрации: "+obj.data)
+        }else{
+            console.log("Незарегистрированый пользователь: "+obj.name)
+        }
+    
+}
+
+person.getInfo = userInfo
+nobody.getInfo = userInfo
+
+person.getInfo(person)
+nobody.getInfo(nobody)
+	
+</pre>
+	<h3>Третье задание</h3>
+<pre>
+	function getCurrentPostComments ( postId ) {
+         
+	var res = []
+        
+	for (var id in comments)
+	{
+   if (comments[id].postId !== postId) continue
+   
+	res.push({
+    
+	author:[comments[id].author].name
+    
+	text:[comments[id]].text
+}) 
+}
+        
+return res
+}
+</pre>
+
+
+
+
+</body>
+</html>
