@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HW2</title>    
+</head>
+<body>
+	Frolenkov Kirill
+	
+	
+	<pre>
+		Первое задание
+
+var womenbag={
+  pomade:"red",
+  phone:"sumsung",
+  mirror:"silver",
+}
+womenbag.deleteProperty = function ( prop, ) {
+    delete (this [ prop ]) }
+womenbag.setNewProperty = function ( prop, value ) {
+    this [ prop ] = value
+}
+
+
+	</pre>
+
+	<pre>
+		Второе задание
+
+
+var LibraryBook = function ( _title = "Без названия", _year = "нет данных", _author = "нет данных" ) {
+        var title = _title
+        var year = _year
+        var author = _author
+        var readerName = null
+        var readerData = null
+        function giveTheBook ( client, data = new Date() ) {
+                readerName = client
+                readerData = data
+        }
+        this.getBookInfo = function () {
+                var text = readerName ? "выдана на руки" : "есть в наличии"
+                console.info ( `${author}, ${title} (${year}): ${text}` )
+        }
+        this.getTheBook = function ( client, data ) {
+                if ( readerName ) {
+                        this.getBookInfo ()
+                        return null
+                } else {
+                        giveTheBook ( client, data )
+                        return {
+                                title: title,
+                                year: year,
+                                author: author
+                        }
+                }
+        }
+        this.returnBook = function () {
+                readerName = null
+                readerData = null
+        }
+}
+	
+</pre>
+	<h3>Третье задание</h3>
+<pre>
+	function konstr(){}
+konstr.prototype.setNewProperty = function ( prop, value ) {
+    this [ prop ] = value
+}
+</pre>
+
+
+
+
+</body>
+</html>
