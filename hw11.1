@@ -1,0 +1,31 @@
+let myPageRequest = new Promise ( function (resolve, reject) {
+    let request = new XMLHttpRequest()
+    request.onreadystatechange = function (event) {
+        event.target.readyState === 4 ? 
+            event.target.status >=200 && event.target.status < 300 ? 
+                resolve(JSON.parse(event.target.response)) :
+                reject({status : event.target.status, statusText : event.target.statusText})
+            : null    
+    }
+
+    request.open("GET", "https://github.com/Frolenkov/hw_js/tree/master/json.json")
+    request.send()
+}) 
+   
+myPageRequest.then( 
+    answer => {
+        var conteiner = document.querySelector("#hw11.1")
+        answer.forEach(function(item) {
+        let wrap = conteiner.appendChild(document.createElement("div"))
+        wrap.className = "wrap"
+        wrap.style = "width: 300px; height: 300px; display: flex; flex-flow: column;align-items: center;margin: 5px; border: 2px solid black;"
+        let img = wrap.appendChild(document.createElement("img"))
+        let imgTitle = wrap.appendChild(document.createElement("p"))
+        img.style = "width: 250px; height: 250px"
+        img.src = item.ref
+        imgTitle.innerText = item.title
+        imgTitle.style.textAlign = "center"
+}),
+    error => console.log(error)
+
+    })
