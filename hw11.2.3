@@ -1,0 +1,75 @@
+//First
+
+var messages = [
+    "backspace",
+    "enter",
+    "shift",
+    "control",
+    "delete",
+    "space",
+    "subtract"
+]
+
+messages.getKey = () => {
+    var key = new Date().toLocaleString().split(", ")[1]
+    return log [ key ] ? log [ key + "[2]" ] ? key + "[3]" : key + "[2]" : key
+}
+
+var log = {}
+
+var sendMessage = message => new Promise (
+    resolve => setTimeout (
+        () => resolve ( message ),
+        Math.random () * 7000
+    )
+)
+
+messages.forEach (
+    ( message, index, arr ) => sendMessage ( message )
+        .then (
+            mess => Object.assign ( log,
+                { [ arr.getKey() ] : message }
+            )
+        )
+)
+
+//Second
+var messages = [
+    "backspace",
+    "enter",
+    "shift",
+    "control",
+    "delete",
+    "space",
+    "subtract"
+]
+
+messages.getKey = () => new Date().toLocaleString().split(", ")[1]
+
+var log = {}
+
+var sendMessage = message => new Promise (
+    resolve => setTimeout (
+        () => resolve ( message ),
+        Math.random () * 5000
+    )
+)
+
+var sendAll = () => {
+    var index = 0
+    function recursive () {
+        sendMessage ( messages [ index++ ] )
+            .then (
+                response => {
+                    if ( !response ) return
+                    Object.assign ( log,
+                        { [ messages.getKey() ] : response }
+                    )
+                    recursive ()
+                }
+            )
+    }
+    recursive ()
+}
+
+sendAll()
